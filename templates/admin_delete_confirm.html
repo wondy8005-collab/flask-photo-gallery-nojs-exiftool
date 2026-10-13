@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Datei löschen</h1>
+  <p>Soll die Datei <strong>{{ filename }}</strong> im Album <strong>{{ album }}</strong> wirklich gelöscht werden?</p>
+  <form method="post">
+    <button name="confirm" value="yes" type="submit">Ja, löschen</button>
+    <button name="confirm" value="no" type="submit">Abbrechen</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Alle Alben</h1>
+  <div class="albums">
+    {% for album in albums %}
+      <div class="album-card">
+        <h3><a href="{{ url_for('album_view', album=album) }}">{{ album }}</a></h3>
+        <p><a href="{{ url_for('album_view', album=album) }}">Öffnen</a></p>
+      </div>
+    {% else %}
+      <p>Keine Alben vorhanden. Lege einen Ordner unter photo/ an oder benutze den Adminbereich.</p>
+    {% endfor %}
+  </div>
+{% endblock %}

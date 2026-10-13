@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+  {% if slideshow %}
+    <meta http-equiv="refresh" content="{{ interval }};URL={{ url_for('view_item', album=album, filename=next_file, slideshow=1, interval=interval) }}">
+  {% endif %}
+  <div class="viewer">
+    <div class="viewer-actions">
+      <a class="nav" href="{{ url_for('view_item', album=album, filename=prev_file) }}">← vorheriges</a>
+      <a class="nav" href="{{ url_for('album_view', album=album) }}">zurück zum Album</a>
+      <a class="nav" href="{{ url_for('view_item', album=album, filename=next_file) }}">nächstes →</a>
+      {% if not slideshow %}
+        <a class="nav right" href="{{ url_for('view_item', album=album, filename=next_file, slideshow=1) }}">Diashow starten</a>
+      {% else %}
+        <a class="nav right" href="{{ url_for('view_item', album=album, filename=filename) }}">Diashow stoppen</a>
+      {% endif %}
+    </div>
+
+    <div class="media-full">
+      {% if file.is_image %}
+        <img src="{{ url_for('media', filename=album + '/' + filename) }}" alt="{{ filename }}">
+        {% if file.meta.title %}<h2 class="title">{{ file.meta.title }}</h2>{% endif %}
+        {% if file.meta.description %}<p class="desc">{{ file.meta.description }}</p>{% endif %}
+      {% else %}
+        <video controls>
+          <source src="{{ url_for('media', filename=album + '/' + filename) }}">
+          Dein Browser unterstützt das Video-Tag nicht.
+        </video>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

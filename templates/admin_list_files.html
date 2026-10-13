@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Album: {{ album }} — Dateien</h1>
+  <table class="admin-table">
+    <thead><tr><th>Datei</th><th>Datum</th><th>Aktionen</th></tr></thead>
+    <tbody>
+      {% for f in files %}
+        <tr>
+          <td>{{ f.filename }}</td>
+          <td>{{ f.datetime.strftime('%Y-%m-%d %H:%M:%S') if f.datetime else '—' }}</td>
+          <td>
+            <a href="{{ url_for('view_item', album=album, filename=f.filename) }}" target="_blank">Anzeigen</a> |
+            <a href="{{ url_for('admin_edit_metadata', album=album, filename=f.filename) }}">Metadaten bearbeiten</a> |
+            <a href="{{ url_for('admin_delete', album=album, filename=f.filename) }}">Löschen</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p><a href="{{ url_for('admin_index') }}">Zurück</a></p>
+{% endblock %}

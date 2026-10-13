@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Jahr: {{ year }}</h1>
+  <div class="thumbs">
+    {% for item in items %}
+      <div class="thumb">
+        <a href="{{ url_for('view_item', album=item.album, filename=item.filename) }}">
+          {% if item.is_image %}
+            <img src="{{ url_for('media', filename=item.album + '/' + item.filename) }}" alt="{{ item.filename }}">
+          {% else %}
+            <div class="video-thumb">{{ item.filename }}</div>
+          {% endif %}
+        </a>
+        <div class="meta">
+          <div class="name">{{ item.filename }}</div>
+          <div class="album">Album: <a href="{{ url_for('album_view', album=item.album) }}">{{ item.album }}</a></div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

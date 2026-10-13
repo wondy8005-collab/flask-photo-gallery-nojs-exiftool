@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Metadaten bearbeiten: {{ filename }}</h1>
+  <form method="post">
+    <label>Titel:
+      <input name="title" value="{{ entry.title or '' }}">
+    </label>
+    <label>Beschreibung:
+      <textarea name="description">{{ entry.description or '' }}</textarea>
+    </label>
+    <label>Datum (ISO z.B. 2023-08-01T12:00:00):
+      <input name="datetime" value="{{ entry.datetime or '' }}">
+    </label>
+    <button type="submit">Speichern</button>
+  </form>
+  <p><a href="{{ url_for('admin_list_files', album=album) }}">Zurück</a></p>
+{% endblock %}

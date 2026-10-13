@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Admin Login</h1>
+  <form method="post">
+    <label>Passwort:
+      <input type="password" name="password" required>
+    </label>
+    <button type="submit">Anmelden</button>
+  </form>
+  <p>Hinweis: Standardpasswort ist <strong>1234</strong>.</p>
+{% endblock %}

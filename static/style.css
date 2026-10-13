@@ -1,0 +1,33 @@
+/* Einfaches, sauberes Layout ohne JavaScript */
+* { box-sizing: border-box; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+body, html { margin:0; padding:0; height:100%; background:#f6f7fb; color:#222; }
+.container { display:flex; min-height:100vh; }
+.sidebar {
+  width:260px; background: #1f2937; color:#fff; padding:18px; flex-shrink:0;
+}
+.sidebar h2 { margin-top:0; }
+.sidebar a { color:#cfe3ff; text-decoration:none; }
+.sidebar ul { list-style:none; padding-left:0; }
+.sidebar li { margin:6px 0; }
+.main { flex:1; padding:24px; }
+.albums { display:flex; gap:12px; flex-wrap:wrap; }
+.album-card { background:white; padding:12px; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.06); width:220px; }
+.thumbs { display:flex; flex-wrap:wrap; gap:12px; }
+.thumb { width:180px; background:white; padding:8px; border-radius:6px; box-shadow:0 1px 3px rgba(0,0,0,0.04); text-align:center; }
+.thumb img { max-width:100%; height:120px; object-fit:cover; border-radius:4px; }
+.video-thumb { height:120px; display:flex; align-items:center; justify-content:center; background:#111827; color:#fff; border-radius:4px; }
+.meta { font-size:0.85rem; color:#555; margin-top:6px; }
+.viewer { display:flex; flex-direction:column; align-items:center; gap:12px; }
+.media-full { width:100vw; max-height:80vh; display:flex; align-items:center; justify-content:center; background:black; border-radius:6px; overflow:hidden; }
+.media-full img, .media-full video { max-width:100%; max-height:100%; object-fit:contain; display:block; }
+.viewer-actions { width:100%; display:flex; gap:8px; align-items:center; justify-content:flex-start; margin-bottom:8px; }
+.viewer-actions .nav { background:#111827; color:#fff; padding:8px 12px; text-decoration:none; border-radius:6px; }
+.viewer-actions .nav.right { margin-left:auto; }
+.admin-table { width:100%; border-collapse:collapse; background:white; }
+.admin-table th, .admin-table td { padding:8px 10px; border:1px solid #eee; text-align:left; }
+.flashes { margin-bottom:12px; }
+.flash { padding:8px 12px; border-radius:6px; margin-bottom:8px; }
+.flash.success { background:#ecfdf5; color:#065f46; }
+.flash.danger { background:#fee2e2; color:#991b1b; }
+.flash.warning { background:#fff7ed; color:#92400e; }
+.flash.info { background:#eff6ff; color:#1e3a8a; }

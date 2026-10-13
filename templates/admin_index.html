@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Admin-Bereich</h1>
+  <section>
+    <h2>Album erstellen</h2>
+    <form action="{{ url_for('admin_create_album') }}" method="post">
+      <input name="album_name" placeholder="Neuer Albumname">
+      <button type="submit">Erstellen</button>
+    </form>
+  </section>
+  <section>
+    <h2>Datei hochladen</h2>
+    <form action="{{ url_for('admin_upload') }}" method="post" enctype="multipart/form-data">
+      <label>Album:
+        <select name="album">
+          {% for a in albums %}
+            <option value="{{ a }}">{{ a }}</option>
+          {% endfor %}
+        </select>
+      </label>
+      <input type="file" name="file">
+      <button type="submit">Hochladen</button>
+    </form>
+  </section>
+  <section>
+    <h2>Albumverwaltung</h2>
+    <ul>
+      {% for a in albums %}
+        <li>{{ a }} — <a href="{{ url_for('admin_list_files', album=a) }}">Dateien verwalten</a></li>
+      {% endfor %}
+    </ul>
+  </section>
+  <p><a href="{{ url_for('logout') }}">Abmelden</a></p>
+{% endblock %}

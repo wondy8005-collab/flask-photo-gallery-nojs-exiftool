@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Album: {{ album }}</h1>
+  <div class="thumbs">
+    {% for f in files %}
+      <div class="thumb">
+        <a href="{{ url_for('view_item', album=album, filename=f.filename) }}">
+          {% if f.is_image %}
+            <img src="{{ url_for('media', filename=album + '/' + f.filename) }}" alt="{{ f.filename }}">
+          {% else %}
+            <div class="video-thumb">{{ f.filename }}</div>
+          {% endif %}
+        </a>
+        <div class="meta">
+          <div class="name">{{ f.filename }}</div>
+          <div class="date">{{ f.datetime.strftime('%Y-%m-%d %H:%M:%S') if f.datetime else '—' }}</div>
+        </div>
+      </div>
+    {% else %}
+      <p>Keine Dateien im Album.</p>
+    {% endfor %}
+  </div>
+{% endblock %}
