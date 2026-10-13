@@ -13,6 +13,10 @@
       {% else %}
         <a class="nav right" href="{{ url_for('view_item', album=album, filename=filename) }}">Diashow stoppen</a>
       {% endif %}
+      {% if session.get('admin') %}
+        <a class="nav admin-inline" href="{{ url_for('admin_edit_metadata', album=album, filename=filename) }}">Metadaten bearbeiten</a>
+        <a class="nav admin-inline danger" href="{{ url_for('admin_delete', album=album, filename=filename) }}">Löschen</a>
+      {% endif %}
     </div>
 
     <div class="media-full">

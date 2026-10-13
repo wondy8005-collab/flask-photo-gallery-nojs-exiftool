@@ -23,6 +23,7 @@ body, html { margin:0; padding:0; height:100%; background:#f6f7fb; color:#222; }
 .viewer-actions { width:100%; display:flex; gap:8px; align-items:center; justify-content:flex-start; margin-bottom:8px; }
 .viewer-actions .nav { background:#111827; color:#fff; padding:8px 12px; text-decoration:none; border-radius:6px; }
 .viewer-actions .nav.right { margin-left:auto; }
+.viewer-actions .nav.admin-inline { margin-left:8px; background:#065f46; }
 .admin-table { width:100%; border-collapse:collapse; background:white; }
 .admin-table th, .admin-table td { padding:8px 10px; border:1px solid #eee; text-align:left; }
 .flashes { margin-bottom:12px; }
@@ -31,3 +32,9 @@ body, html { margin:0; padding:0; height:100%; background:#f6f7fb; color:#222; }
 .flash.danger { background:#fee2e2; color:#991b1b; }
 .flash.warning { background:#fff7ed; color:#92400e; }
 .flash.info { background:#eff6ff; color:#1e3a8a; }
+
+/* Admin overlay buttons on thumbnails */
+.admin-overlay { position:absolute; top:8px; right:8px; display:flex; flex-direction:column; gap:6px; }
+.admin-btn { display:inline-block; background:rgba(17,24,39,0.9); color:#fff; padding:6px 8px; border-radius:6px; text-decoration:none; font-size:0.85rem; }
+.admin-btn.danger { background:rgba(185,28,28,0.9); }
+

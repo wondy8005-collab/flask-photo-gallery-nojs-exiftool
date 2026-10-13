@@ -3,7 +3,7 @@
   <h1>Jahr: {{ year }}</h1>
   <div class="thumbs">
     {% for item in items %}
-      <div class="thumb">
+      <div class="thumb" style="position:relative;">
         <a href="{{ url_for('view_item', album=item.album, filename=item.filename) }}">
           {% if item.is_image %}
             <img src="{{ url_for('media', filename=item.album + '/' + item.filename) }}" alt="{{ item.filename }}">
@@ -11,6 +11,12 @@
             <div class="video-thumb">{{ item.filename }}</div>
           {% endif %}
         </a>
+        {% if session.get('admin') %}
+          <div class="admin-overlay">
+            <a class="admin-btn" href="{{ url_for('admin_edit_metadata', album=item.album, filename=item.filename) }}">Metadaten</a>
+            <a class="admin-btn danger" href="{{ url_for('admin_delete', album=item.album, filename=item.filename) }}">Löschen</a>
+          </div>
+        {% endif %}
         <div class="meta">
           <div class="name">{{ item.filename }}</div>
           <div class="album">Album: <a href="{{ url_for('album_view', album=item.album) }}">{{ item.album }}</a></div>
